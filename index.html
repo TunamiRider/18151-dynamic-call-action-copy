@@ -37,7 +37,7 @@
         // +++ Build dynamic anchor tag +++
         var linkText = myPlayer.mediainfo.link.text,
           linkURL = myPlayer.mediainfo.link.url,
-          hrefString = '<a href = "' + linkURL + '" target="_blank" rel="noopener noreferrer">' + linkText + '</a>';
+          hrefString = '<a href = "' + linkURL + '" target="_blank" rel="noopener noreferrer" style="color: wheat">' + linkText + '</a>';
 
         // +++ Inject dynamic HTML into p element +++
         document.getElementById("cta").innerHTML = hrefString;
