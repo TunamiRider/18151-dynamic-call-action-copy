@@ -7,7 +7,7 @@ videojs.registerPlugin('customSSAI', function() {
 		myPlayer.ssai();
 
     // use the catalog object to retrieve a video from your Video Cloud library. Replace the video id below with your own value. Notice that the ad config id is passed as a parameter for the getVideo() call.
-		myPlayer.catalog.getVideo("5165694790001", function(error, video) {
+		myPlayer.catalog.getVideo("5625751316001", function(error, video) {
 			if (error) {
         // if there was an error retrieving the video, then set the error.
 				myPlayer.error(error);
