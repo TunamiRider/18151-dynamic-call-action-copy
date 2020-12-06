@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <title>Untitled Document</title>
   <title>Untitled Document and Advertising with the SSAI Plugin</title>
   <!-- styles for the SSAI plugin -->
   <link href="//players.brightcove.net/videojs-ssai/1/videojs-ssai.css" rel="stylesheet">
@@ -13,9 +14,7 @@
     }
   </style>
 </head>
-
 <body>
-
   <video-js id="myPlayerID"
     data-video-id="5165694790001"
     data-account="1752604059001"
@@ -25,22 +24,20 @@
     class="video-js"
     controls></video-js>
   <script src="https://players.brightcove.net/1752604059001/ByezEPhOZ_default/index.min.js"></script>
+  <!-- Ad part -->
   <!-- script for the SSAI plugin -->
 	<script src="//players.brightcove.net/videojs-ssai/1/videojs-ssai.js"></script>
-
-
-  <!-- +++ Insert dynamic in page CTA here +++ -->
-  <p id="cta" style='color:red; font-weight: bold; font-size: 20px'></p>
-
-  <script type="text/javascript">
+    <script type="text/javascript">
     videojs.getPlayer('myPlayerID').ready(function() {
+      // replace the value below with your ad config id
       var myPlayer = this,
-	  adConfigId = "d6190656-2095-4ff3-8afe-1a0b60d67ed2";
-	    
-	// initialize the SSAI plugin
-  	myPlayer.ssai();
-	      // use the catalog object to retrieve a video from your Video Cloud library. Replace the video id below with your own value. Notice that the ad config id is passed as a parameter for the getVideo() call.
-  		myPlayer.catalog.getVideo("5165694790001", function(error, video) {
+          adConfigId = "d6190656-2095-4ff3-8afe-1a0b60d67ed2";
+
+      // initialize the SSAI plugin
+  		myPlayer.ssai();
+
+      // use the catalog object to retrieve a video from your Video Cloud library. Replace the video id below with your own value. Notice that the ad config id is passed as a parameter for the getVideo() call.
+  		myPlayer.catalog.getVideo("5625751316001", function(error, video) {
   			if (error) {
           // if there was an error retrieving the video, then set the error.
   				myPlayer.error(error);
@@ -52,17 +49,23 @@
   			}
       }, adConfigId);
 
+    });
+  </script>
+  <!-- End Ad part -->
+
+  <!-- +++ Insert dynamic in page CTA here +++ -->
+  <p id="cta" style='color:red; font-weight: bold; font-size: 20px'></p>
+  <script type="text/javascript">
+    videojs.getPlayer('myPlayerID').ready(function() {
+      var myPlayer = this;
       // Wait for loadstart before accessing mediainfo information
       myPlayer.on('loadstart', function(evt) {
-
         // +++ Build dynamic anchor tag +++
         var linkText = myPlayer.mediainfo.link.text,
           linkURL = myPlayer.mediainfo.link.url,
           hrefString = '<a href = "' + linkURL + '" target="_blank" rel="noopener noreferrer" style="color: wheat">' + linkText + '</a>';
-
         // +++ Inject dynamic HTML into p element +++
         document.getElementById("cta").innerHTML = hrefString;
-
         // +++ Configure dynamic overlay +++
         myPlayer.overlay({
           overlays: [{
@@ -72,12 +75,10 @@
             "end": "play"
           }]
         });
-
         // +++ Configure dynamic endscreen +++
         myPlayer.customEndscreen({
           "content": "<p style='font-weight: bold; font-size: 20px'>" + hrefString + "</p>"
         });
-
         // +++ Remove overlay after video has ended +++
         myPlayer.on('ended', function() {
           var overlayElement = document.getElementsByClassName('vjs-overlay')[0];
@@ -86,7 +87,5 @@
       });
     });
   </script>
-
 </body>
-
 </html>
