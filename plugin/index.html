@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <title>Untitled Document</title>
   <link href="dynamic-cta.css" rel="stylesheet">
+  <!-- styles for the SSAI plugin -->
+  <link href="//players.brightcove.net/videojs-ssai/1/videojs-ssai.css" rel="stylesheet">
+  <!-- styles for your custom player -->
+  <link href="custom-ssai.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,8 +25,13 @@
 
   <!-- +++ Insert dynamic in page CTA here +++ -->
   <p id="cta" style='color:red; font-weight: bold; font-size: 20px'></p>
+  <!-- script for the SSAI plugin -->
+	<script src="//players.brightcove.net/videojs-ssai/1/videojs-ssai.js"></script>
 
   <script src="dynamic-cta.js"></script>
+  <!-- your custom script -->
+  <script type="text/javascript" src="custom-ssai.js"></script>
+  <script>videojs.getPlayer('myPlayerID').customSSAI();</script>
 
   <script type="text/javascript">
     videojs.getPlayer('myPlayerID').ready(function() {
